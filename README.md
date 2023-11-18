@@ -1,6 +1,6 @@
 # local-community-site-web
 
-環境構築
+開発環境
 
 バージョン
 
