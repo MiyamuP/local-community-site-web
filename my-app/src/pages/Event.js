@@ -28,6 +28,11 @@ export const Event = () => {
         navigate('/article', { state: { article: val } });
     }
 
+    const dispDate = (date) => {
+        const dateT = new Date(date);
+        return (dateT.toLocaleString());
+    }
+
     return (
         <div className="container py-4" id="works">
             <div className="d-flex justify-content-center">
@@ -43,8 +48,8 @@ export const Event = () => {
                         <div className="card">
                             <div className="card-body">
                                 <h5 className="card-title">{val.title}</h5>
-                                <p className="card-text">{val.author}</p>
-                                <p className="card-text"><small className="text-muted">{val.create_time}</small></p>
+                                <p className="card-text">作成者名: {val.author}</p>
+                                <p className="card-text"><small className="text-muted">制作日時: {dispDate(val.create_time)}</small></p>
                                 <div style={{ textAlign: "right" }}><button className="btn btn-primary" onClick={() => toArticle(val)}>もっと見る</button></div>
                             </div>
                         </div>

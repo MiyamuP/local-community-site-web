@@ -24,14 +24,28 @@ export const Article = () => {
 
     const handleSubmit = event => {
         event.preventDefault();
-        const submit_data = new FormData(event.currenTarget);
         console.log(commentText);
         axios.post('http://127.0.0.1:8000/api/comment_post/', {
             text: commentText,
             author_name: "",
             article_id: location.state.article.article_id
         })
+        axios
+            .get('http://127.0.0.1:8000/api/commentlist/' + location.state.article.article_id)
+            .then(response => {
+                setComments(response.data);
+                console.log(comments);
+            })
+            .catch(() => {
+                console.log('通信に失敗しました');
+            });
+        setCommetText("");
     };
+
+    const dispDate = (date) => {
+        const dateT = new Date(date);
+        return (dateT.toLocaleString());
+    }
 
     return (
         <div className="ml-10">
@@ -43,29 +57,29 @@ export const Article = () => {
                     </div>
                 </div>
                 <div class="text-right">
-                    <br /><p class="mr-5">制作日時: {location.state.article.create_time}</p><p class="mr-5">作成者名: {location.state.article.author}</p><br />
+                    <br /><p class="mr-5">制作日時: {dispDate(location.state.article.create_time)}</p><p class="mr-5">作成者名: {location.state.article.author}</p><br />
                 </div>
                 <div className="mx-5 border rounded border-warning">
                     <br />
-                    <p className="mx-5 rounded-text">メッセージ内容<br />{location.state.article.text}</p>
+                    <p className="mx-5 rounded-text"><br />{location.state.article.text}</p>
                 </div>
             </div>
 
-            <div class="mx-auto p-2" style={{ width: "650px;" }}>
+            <div class="mx-auto p-2" style={{ width: 650 }}>
                 <div class="p-3 mb-2 bg-warning">
                     <div class="d-flex justify-content-center">
                         <h3>Comment</h3>
                     </div>
 
 
-                    <div class="mx-auto p-2" style={{ width: "600px;" }}>
+                    <div class="mx-auto p-2" style={{ width: 600 }}>
                         {comments.map((comment) => (
 
                             <div class="card mb-3">
                                 <div class="card-body">
                                     {!(comment.author_name) && <h5 class="card-title">名無し</h5>}
                                     {comment.author_name && <h5 class="card-title">{comment.author_name}</h5>}
-                                    <p class="card-text"><small class="text-muted ml-2">投稿日: {comment.create_time}</small></p>
+                                    <p class="card-text"><small class="text-muted ml-2">投稿日: {dispDate(comment.create_time)}</small></p>
                                     <p class="card-text">{comment.text}</p>
                                 </div>
                             </div>
@@ -74,7 +88,7 @@ export const Article = () => {
 
                     <div class="p-3 mb-2 mt-5 bg-white">
                         <form class="m-2" onSubmit={event => handleSubmit(event)}>
-                            <textarea class="form-control" id="exampleFormControlTextarea1" name="content" rows="3" onChange={(event) => setCommetText(event.target.value)}></textarea>
+                            <textarea class="form-control" id="exampleFormControlTextarea1" name="content" rows="3" value={commentText} onChange={(event) => setCommetText(event.target.value)}></textarea>
                             <div class="d-flex justify-content-center mt-2">
                                 <button type="submit" class="btn btn-primary">Submit</button>
                             </div>
