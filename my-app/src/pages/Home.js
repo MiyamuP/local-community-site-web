@@ -4,6 +4,7 @@ import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import axios from 'axios';
+axios.defaults.baseURL = 'http://localhost:8000';
 
 
 // LeafletのCSSでマーカーのスタイルを定義する
@@ -50,7 +51,7 @@ const mockAxiosGet = async (url) => {
 useEffect(() => {
     const fetchData = async () => {
     try {
-        const response = await axios.get('/api/prefectures');
+        const response = await axios.get('http://127.0.0.1:8000/api/prefectures/');
         // const response = await mockAxiosGet('/api/prefectures'); // モック関数を呼び出す
         setPrefectures(response.data);
     } catch (error) {
