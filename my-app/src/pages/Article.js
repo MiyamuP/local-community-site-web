@@ -8,14 +8,14 @@ export const Article = () => {
     return (
         <div className="ml-10">
             <br />
-            <div className="container py-4" id="works">
-                <div className="d-flex justify-content-center">
-                    <div className="border-bottom border-warning">
-                        <h2>{location.state.article.Article_title}</h2>
+            <div class="container py-4" id="works">
+                <div class="d-flex justify-content-center">
+                    <div class="border-bottom border-warning">
+                        <h2>{location.state.article.title}</h2>
                     </div>
                 </div>
-                <div className="text-right">
-                    <br /><p class="mr-5">制作日時: {location.state.article.create_time}</p><p class="mr-5">作成者名: {location.state.article.Author}</p><br />
+                <div class="text-right">
+                    <br /><p class="mr-5">制作日時: {location.state.article.create_time}</p><p class="mr-5">作成者名: {location.state.article.author}</p><br />
                 </div>
                 <div className="mx-5 border rounded border-warning">
                     <br />
