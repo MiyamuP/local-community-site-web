@@ -50,8 +50,8 @@ const mockAxiosGet = async (url) => {
 useEffect(() => {
     const fetchData = async () => {
     try {
-        // const response = await axios.get('/api/prefectures');
-        const response = await mockAxiosGet('/api/prefectures'); // モック関数を呼び出す
+        const response = await axios.get('/api/prefectures');
+        // const response = await mockAxiosGet('/api/prefectures'); // モック関数を呼び出す
         setPrefectures(response.data);
     } catch (error) {
         console.error("APIからのデータ取得に失敗しました。", error);
