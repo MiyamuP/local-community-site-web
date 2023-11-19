@@ -3,7 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { useNavigate, useParams } from "react-router";
 
 
-export const Home = () => {
+export const Event = () => {
     const navigate = useNavigate();
     const { id } = useParams();
     console.log(id);
@@ -92,4 +92,4 @@ export const Home = () => {
         </div>
     );
 }
-export default Home;
+export default Event;
