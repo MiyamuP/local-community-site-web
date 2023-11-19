@@ -10,7 +10,7 @@ import axios from 'axios';
 const markerHtmlStyles = `
     background-color: #2A82DA;
     width: 3rem;
-    height: 2.5rem;
+    height: 3rem;
     display: block;
     left: -1.5rem;
     top: -1.5rem;
@@ -19,7 +19,7 @@ const markerHtmlStyles = `
     transform: rotate(45deg);
     border: 3px solid #FFFFFF;
     color: white; /* テキストの色 */
-    font-size: 15px; /* テキストの大きさをここで調整 */
+    font-size: 11px; /* テキストの大きさをここで調整 */
     line-height: 3rem; /* アイコンの高さに合わせて中央揃えにする */
     text-align: center; /* テキストを中央揃えにする */
     padding: 0; /* 必要に応じてパディングを調整 */
@@ -50,8 +50,8 @@ const mockAxiosGet = async (url) => {
 useEffect(() => {
     const fetchData = async () => {
     try {
-        const response = await axios.get('/api/prefectures');
-        // const response = await mockAxiosGet('/api/prefectures'); // モック関数を呼び出す
+        // const response = await axios.get('/api/prefectures');
+        const response = await mockAxiosGet('/api/prefectures'); // モック関数を呼び出す
         setPrefectures(response.data);
     } catch (error) {
         console.error("APIからのデータ取得に失敗しました。", error);
@@ -77,12 +77,13 @@ const japanBounds = [
 return (
     <div>
         <h1 style={{ textAlign: 'center' }}>コミュニティサイト</h1>
+        <h2 style={{ textAlign: 'center' }}>地域選択</h2>
         <div style={{ display: 'flex', justifyContent: 'center' }}>
             <MapContainer
-                center={[38.6895, 139.6917]}
-                zoom={5.5}
+                center={[30.6895, 139.6917]}
+                zoom={5}
                 maxBounds={japanBounds}
-                style={{ height: '70vh', width: '70%' }}
+                style={{ height: '80vh', width: '80%' }}
             >
             <TileLayer
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
