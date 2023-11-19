@@ -6,7 +6,7 @@ export const Article = () => {
     const location = useLocation();
     console.log(location);
     return (
-        <div class="ml-10">
+        <div className="ml-10">
             <br />
             <div class="container py-4" id="works">
                 <div class="d-flex justify-content-center">
@@ -17,9 +17,9 @@ export const Article = () => {
                 <div class="text-right">
                     <br /><p class="mr-5">制作日時: {location.state.article.create_time}</p><p class="mr-5">作成者名: {location.state.article.author}</p><br />
                 </div>
-                <div class="mx-5 border rounded border-warning">
+                <div className="mx-5 border rounded border-warning">
                     <br />
-                    <p class="mx-5 rounded-text">メッセージ内容<br />{location.state.article.text}</p>
+                    <p className="mx-5 rounded-text">メッセージ内容<br />{location.state.article.text}</p>
                 </div>
             </div>
         </div>
