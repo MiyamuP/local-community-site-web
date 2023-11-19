@@ -16,11 +16,11 @@ export const Event = () => {
             .get('http://127.0.0.1:8000/api/articlelist/' + id + '/')
             .then(response => {
                 setPosts(response.data);
+                console.log(posts);
             })
             .catch(() => {
                 console.log('通信に失敗しました');
             });
-        console.log(posts);
     }, []);
 
     const toArticle = (val) => {
