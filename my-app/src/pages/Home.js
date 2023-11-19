@@ -4,6 +4,8 @@ import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import axios from 'axios';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './Home.css';
 
 
 // LeafletのCSSでマーカーのスタイルを定義する
@@ -78,20 +80,22 @@ const japanBounds = [
 ];
 
 return (
-    <div>
-        <h1 style={{ textAlign: 'center' }}>コミュニティサイト</h1>
-        <h2 style={{ textAlign: 'center' }}>地域選択</h2>
-        <div style={{ display: 'flex', justifyContent: 'center' }}>
-            <MapContainer
-                center={[30.6895, 139.6917]}
-                zoom={5}
-                maxBounds={japanBounds}
-                style={{ height: '80vh', width: '80%' }}
-            >
+    <div className="container mt-5">
+        <div className="text-center mb-4">
+        <h1>コミュニティサイト</h1>
+        <h2>地域選択</h2>
+        </div>
+        <div className="map-container" /* This is a custom class for additional styling */>
+        <MapContainer
+            center={[30.6895, 139.6917]}
+            zoom={5}
+            maxBounds={japanBounds}
+            style={{ height: '80vh', width: '100%' }}
+        >
             <TileLayer
-                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                />
+            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            />
                 {prefectures.map((prefecture) => {
                     const customMarkerIcon = L.divIcon({
                         className: "custom-div-icon",
