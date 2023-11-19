@@ -66,8 +66,8 @@ useEffect(() => {
 const navigate = useNavigate(); // useNavigate フックを初期化
 
 // ピンをクリックした時の画面遷移処理
-const handleMarkerClick = (prefectureId) => {
-    navigate(`/event/${prefectureId}`);
+const handleMarkerClick = (prefecture_id) => {
+    navigate(`/event/${prefecture_id}`);
     // navigate('/../article'); // デモ用の固定されたパスに遷移する
 };
 
