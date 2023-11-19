@@ -12,3 +12,7 @@ $ cd myapp
 $ npm install
 $ npm start dev
 ```
+必要ライブラリのインストール
+```
+$　npm install leaflet react-leaflet axios
+```
