@@ -80,45 +80,67 @@ const japanBounds = [
 ];
 
 return (
-    <div className="container mt-5">
-        <div className="text-center mb-4">
-        <h1>コミュニティサイト</h1>
-        <h2>地域選択</h2>
-        </div>
-        <div className="map-container" /* This is a custom class for additional styling */>
-        <MapContainer
-            center={[30.6895, 139.6917]}
-            zoom={5}
-            maxBounds={japanBounds}
-            style={{ height: '80vh', width: '100%' }}
-        >
-            <TileLayer
-            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-            />
+            <div className="container mt-5">
+            <div className="text-center mb-4">
+            <h1 className="display-4">コミュニティサイト</h1>
+            <h2 className="display-5">地域選択</h2>
+            </div>
+            <div className="row">
+            <div className="col-md-4">
+                {/* Prefecture names list */}
+                <ul className="list-group">
+                {prefectures.map((prefecture) => (
+                    <li key={prefecture.id} className="list-group-item">
+                    {/* Make list item clickable */}
+                    <button
+                        type="button"
+                        className="btn btn-link p-0"
+                        onClick={() => handleMarkerClick(prefecture.id)}
+                    >
+                        {prefecture.name}
+                    </button>
+                    </li>
+                ))}
+                </ul>
+            </div>
+            <div className="col-md-8">
+            {/* Map container */}
+            <div className="map-container">
+                <MapContainer
+                center={[38.6895, 139.6917]}
+                zoom={5}
+                maxBounds={japanBounds}
+                style={{ height: '50vh', width: '100%' }}
+                >
+                <TileLayer
+                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                    attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                />
                 {prefectures.map((prefecture) => {
                     const customMarkerIcon = L.divIcon({
-                        className: "custom-div-icon",
-                        html: `<span class="my-custom-pin" style="${markerHtmlStyles} ${textRotationStyle}">${prefecture.name}</span>`,
-                        iconSize: [30, 42],
-                        iconAnchor: [15, 42]
+                    className: "custom-div-icon",
+                    html: `<span class="my-custom-pin" style="${markerHtmlStyles} ${textRotationStyle}">${prefecture.name}</span>`,
+                    iconSize: [30, 42],
+                    iconAnchor: [15, 42]
                     });
-
+    
                     return (
-                        <Marker
-                            key={prefecture.id}
-                            position={prefecture.position}
-                            icon={customMarkerIcon}
-                            eventHandlers={{
-                                click: () => handleMarkerClick(prefecture.id),
-                            }}
-                        />
+                    <Marker
+                        key={prefecture.id}
+                        position={prefecture.position}
+                        icon={customMarkerIcon}
+                        eventHandlers={{
+                        click: () => handleMarkerClick(prefecture.id),
+                        }}
+                    />
                     );
                 })}
-            </MapContainer>
+                </MapContainer>
+            </div>
+            </div>
         </div>
-    </div>
-);
+        </div>
+    );
 };
 
 export default Home;
