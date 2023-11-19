@@ -1,0 +1,32 @@
+.map-container {
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin: 2rem auto;
+    border: 1px solid #ddd;
+    /* Adds a light border for a slight contrast */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    /* Smooth transitions for hover effects */
+}
+
+
+/* Hover effect to slightly enlarge the map and increase shadow */
+
+.map-container:hover {
+    transform: scale(2.02);
+    /* Slightly enlarges the map */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    /* Increases shadow */
+}
+
+
+/* Responsive adjustments for smaller screens */
+
+@media (max-width: 768px) {
+    .map-container {
+        margin: 1rem;
+        /* Less space on the sides on smaller screens */
+        border-radius: 10px;
+        /* Smaller border radius for smaller screens */
+    }
+}

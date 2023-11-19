@@ -4,6 +4,7 @@ import Home from './pages/Home'
 import Article from './pages/Article'
 import Event from './pages/Event'
 import Header from './components/Header';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (
